@@ -1,8 +1,11 @@
+import { PrismaClient } from "@prisma/client";
+
 class TarefaModel {
-  constructor() {
-    this.tarefas = [{ id: 1, descricao: "Estudar Node.js", concluida: false }];
-  }
-  getAll = () => this.tarefas;
+
+  getAll = async () => {
+    return await prisma.tarefa.findMany();
+  };
+
   create = (descricao) => {
     const novaTarefa = {
       id: this.tarefas.length + 1,
