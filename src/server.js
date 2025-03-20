@@ -5,5 +5,5 @@ const port = 4000;
 app.use(express.json());
 app.use("/tarefas", tarefaRoutes);
 app.listen(port, () => {
-  console.log(`Tô dançando valsa na ${port} 💃`);
+  console.log(`Tô dançando valsa na porta ${port} 💃`);
 });
