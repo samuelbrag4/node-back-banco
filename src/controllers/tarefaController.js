@@ -53,7 +53,7 @@ class TarefaController {
         return res.status(404).json({ erro: "A tarefa vacilou com você" });
       }
 
-      res.status(204).send({ message: "A tarefa foi pro vasco!!!"});
+      res.status(200).send({ message: "A tarefa foi pro vasco!!!"});
 
     } catch (error) {
       console.error(error);
