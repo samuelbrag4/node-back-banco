@@ -35,6 +35,8 @@ class TarefaController {
         return res.status(404).json({ erro: "Não achei a tarefa não man..." });
       }
 
+      res.json(tarefaAtualizada)
+
     } catch (error) {
       console.error(error);
       res.status(500).json({ erro: "Filhote, não deu pra atualizar." })
