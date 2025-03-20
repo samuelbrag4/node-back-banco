@@ -33,22 +33,33 @@ class TarefaController {
 
       if(!tarefaAtualizada) {
         return res.status(404).json({ erro: "Não achei a tarefa não man..." });
-      }
+      } 
 
       res.json(tarefaAtualizada)
 
     } catch (error) {
       console.error(error);
-      res.status(500).json({ erro: "Filhote, não deu pra atualizar." })
+      res.status(500).json({ erro: "Filhote, não deu pra atualizar." });
     }
   };
 
-  delete = ({ params: { id } }, res) => {
-    const sucesso = tarefaModel.delete(id);
-    if (!sucesso) {
-      return res.status(404).json({ erro: "Tarefa não encontrada" });
+  delete = async (req, res) => {
+    const { id } = req.params;
+
+    try {
+      const sucesso = await tarefaModel.delete(Number(id));
+
+      if (!sucesso) {
+        return res.status(404).json({ erro: "A tarefa vacilou com você" });
+      }
+
+      res.status(204).send({ message: "A tarefa foi pro vasco!!!"});
+
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ error: "CHORA FI, CHORA MSM PQ A TAREFA N FOI EXCLUIDA" });
     }
-    res.status(204).send();
   };
 }
+
 export default new TarefaController();
